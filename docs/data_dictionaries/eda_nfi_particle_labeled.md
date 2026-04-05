@@ -1,5 +1,6 @@
-# Data Dictionary for:
-## EDA of the NFI Particle dataset with GSR labels
+# EDA of the NFI Particle dataset with GSR labels
+
+## Data Dictionary
 
 The dataset (`particle_labeled.parquet`) contains 2,801,667 rows and 95 columns. Each row represents a single particle measured by SEM/EDS.
 
