@@ -4,9 +4,13 @@
 
 **Prepared by:** Kristin Predeck, Brendan OConnell, Carlos Adamson (Team Delta)
 
-**Prepared for:** Forensic science stakeholders, including crime laboratories, law enforcement agencies, standards bodies (e.g., NIST, ENFSI), legal and public defense organizations, and federal research funders
+**Prepared for:** National Institute of Justice (Department of Justice research agency)
 
 ---
+
+__A Note on Research Beneficiaries__
+
+With the support of our primary funder, the National Institute of Justice, our findings aim to directly improve reliability and efficiency of GSR classification techniques for forensic science professionals in crime laboratories and law enforcement agencies, as well as metrology bodies like NIST who define benchmarks and standards for particle analysis. Additionally, public defenders and legal organizations such as the Innocence Project may find benefits from the results of our research, namely with false positive analysis and model limitations.
 
 ## 1. Background and Research Question
 
@@ -32,7 +36,14 @@ This project draws on two complementary datasets:
 
 ### 3.2 Cleaning, Merging, and Aggregation
 
-Several preprocessing steps were required before EDA could begin. First, the 14 NFI particle CSV files were concatenated into a single dataframe; files 2 through 14 lacked column headers, so the column names from file 1 were applied to all subsequent files. Second, the NFI documentation's merging rules were applied to consolidate the 27 original relevance classes into 15 final classes (e.g., PbSbBa, PbSbBaSn, and PbSbBaSr were all mapped to PbBaSb). Third, the NIST shooter samples were parsed to confirm which NFI particle classes correspond to genuine GSR. Based on this cross-referencing, each NFI particle was assigned one of three labels: GSR (classes PbBaSb, PbBa, PbSb, BaSb), Non-GSR (classes BaAl, BaCaSi, CuZn, ZnTi, Hg, TiZnGd, GaCuSn), or Ambiguous (single-element classes Pb, Ba, Sb, Sr that could represent either GSR fragments or environmental particles). The particle data was then merged with the stub metadata table to enable analysis by sample source and project type. The final processed dataset was saved as a Parquet file for efficient downstream use.
+Several preprocessing steps were required before EDA could begin:
+
+- First, the 14 NFI particle CSV files were concatenated into a single dataframe; files 2 through 14 lacked column headers, so the column names from file 1 were applied to all subsequent files.
+- Second, the NFI documentation's merging rules were applied to consolidate the 27 original relevance classes into 15 final classes (e.g., PbSbBa, PbSbBaSn, and PbSbBaSr were all mapped to PbBaSb).
+- Third, the NIST shooter samples were parsed to confirm which NFI particle classes correspond to genuine GSR. Based on this cross-referencing, each NFI particle was assigned one of three labels: GSR (classes PbBaSb, PbBa, PbSb, BaSb), Non-GSR (classes BaAl, BaCaSi, CuZn, ZnTi, Hg, TiZnGd, GaCuSn), or Ambiguous (single-element classes Pb, Ba, Sb, Sr that could represent either GSR fragments or environmental particles). 
+- The particle data was then merged with the stub metadata table to enable analysis by sample source and project type. The final processed dataset was saved as a Parquet file for efficient downstream use.
+
+We confirmed that there were no duplicate particle observations. The composite pairing of stub_id and particle_id yields zero duplicates for a total of 2,801,667 unique observations.
 
 ### 3.3 EDA Methods
 
