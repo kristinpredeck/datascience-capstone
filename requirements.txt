@@ -1,14 +1,17 @@
 # Core data
 pandas
 numpy
+pyarrow
 
 # Visualization
 matplotlib
 seaborn
+glasbey # colorblind palettes
 
 # Machine learning
 scikit-learn
 xgboost
+umap-learn
 
 # Deep learning
 torch
@@ -18,5 +21,5 @@ torchvision
 shap
 
 # Image processing
-opencv-python
-tifffile
+# opencv-python
+# tifffile
